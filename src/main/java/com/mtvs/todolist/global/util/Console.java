@@ -1,15 +1,22 @@
-package com.mtvs.todolist.util;
+package com.mtvs.todolist.global.util;
 
 import java.util.Scanner;
 
 // singleton pattern (Bill Pugh Solution(LazyHolder))를 활용한 스캐너 자원 관리
-public class Console {
+public final class Console {
     private static class LazyHolder {
         private static final Scanner INSTANCE = new Scanner(System.in);
     }
 
     public static Scanner open() {
         return LazyHolder.INSTANCE;
+    }
+
+    // nextInt , nextLine 혼용 시에 버퍼 clear
+    public static void reset() {
+        if (LazyHolder.INSTANCE.hasNextLine()) {
+            LazyHolder.INSTANCE.nextLine();
+        }
     }
 
     public static void close() {
