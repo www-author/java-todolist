@@ -25,4 +25,8 @@ public class RootView {
         Console.close();
         System.exit(0);
     }
+
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }
