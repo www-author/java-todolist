@@ -6,9 +6,9 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.io.InputStream;
 
 public final class SqlHelper {
     private static final Map<String, String> queries = new HashMap<>();
@@ -65,7 +65,7 @@ public final class SqlHelper {
      * @param id XML에서 정의한 query의 id
      * @return SQL 쿼리 문자열
      */
-    public static String get(String id) {
+    public static String getQuery(String id) {
         return queries.get(id);
     }
 }

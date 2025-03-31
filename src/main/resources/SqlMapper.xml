@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mapper>
+<queries>
     <query id="getAllUsers">
         SELECT
         *
@@ -14,8 +14,8 @@
     </query>
 
     <query id="addUser">
-        INSERT INTO users (username, email, password_hash, role_id, created_at)
-        VALUES (?, ?, ?, ?, now())
+        INSERT INTO user (name, email, password, created_at, updated_at, is_deleted)
+        VALUES (?, ?, ?, ?, ?, ?)
     </query>
 
     <query id="updateUser">
@@ -25,4 +25,4 @@
     <query id="deleteUser">
         DELETE FROM users WHERE user_id = ?
     </query>
-</mapper>
+</queries>
