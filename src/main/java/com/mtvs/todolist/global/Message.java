@@ -36,7 +36,7 @@ public enum Message {
     """),
     ENTER_YOUR_NAME("[👤] Enter your name: "),
     ENTER_YOUR_EMAIL("[\uD83D\uDCE9] Enter your email: "),
-    ENTER_YOUR_PASSWORD("[🔑] Enter your password: "),
+    ENTER_YOUR_PASSWORD("[🔑] Enter your password (min : 8, max : 12): "),
     ENTER_CONFIRM_PASSWORD("[✅] Enter your confirm password: "),
     COMPLETE_SIGN_UP("회원 가입을 축하합니다! 2초 뒤, 최초 화면으로 이동합니다.")
     ;
