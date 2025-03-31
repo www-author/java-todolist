@@ -2,6 +2,7 @@ package com.mtvs.todolist.view;
 
 import com.mtvs.todolist.dto.request.UserRequest;
 import com.mtvs.todolist.global.Message;
+import com.mtvs.todolist.global.error.ErrorCode;
 import com.mtvs.todolist.global.util.Console;
 
 public class UserView {
@@ -16,8 +17,8 @@ public class UserView {
         System.out.println(Message.SIGN_UP_INTRO.getMessage());
     }
 
-    public void printSignUp() {
-        System.out.println(Message.COMPLETE_SIGN_UP.getMessage());
+    public void printSignUp(boolean isSignUp) {
+        System.out.println(isSignUp ? Message.COMPLETE_SIGN_UP.getMessage() : ErrorCode.USER_REGISTRATION_FAILED.getMessage());
     }
 
     public UserRequest signUp() {
