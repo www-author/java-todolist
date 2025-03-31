@@ -1,5 +1,7 @@
 package com.mtvs.todolist.dto.request;
 
+import com.mtvs.todolist.model.User;
+
 public class UserRequest {
     private final String name;
     private final String email;
@@ -41,5 +43,14 @@ public class UserRequest {
 
     public String getConfirmPassword() {
         return confirmPassword;
+    }
+
+    public User toEntity() {
+        return User.of(
+                this.name,
+                this.password,
+                this.confirmPassword,
+                this.email
+        );
     }
 }
