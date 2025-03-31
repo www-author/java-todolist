@@ -1,18 +1,17 @@
 package com.mtvs.todolist;
 
 import com.mtvs.todolist.controller.RootController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.mtvs.todolist.global.util.Log;
+import org.slf4j.event.Level;
 
 
 public class Application {
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         try {
             RootController.getInstance().execute();
         } catch (Exception e) {
-            log.error(e.getMessage());
+            Log.record(Level.ERROR, e.getMessage());
         }
     }
 }
