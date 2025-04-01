@@ -1,14 +1,14 @@
-package com.mtvs.todolist.dto.request;
+package com.mtvs.todolist.user.dto.request;
 
-import com.mtvs.todolist.model.User;
+import com.mtvs.todolist.user.model.User;
 
-public class UserRequest {
+public class SignUpRequest {
     private final String name;
     private final String email;
     private final String password;
     private final String confirmPassword;
 
-    private UserRequest(
+    private SignUpRequest(
             final String name,
             final String email,
             final String password,
@@ -20,13 +20,13 @@ public class UserRequest {
         this.confirmPassword = confirmPassword;
     }
 
-    public static UserRequest of(
+    public static SignUpRequest of(
             final String name,
             final String email,
             final String password,
             final String confirmPassword
     ) {
-        return new UserRequest(name, email, password, confirmPassword);
+        return new SignUpRequest(name, email, password, confirmPassword);
     }
 
     public String getName() {
