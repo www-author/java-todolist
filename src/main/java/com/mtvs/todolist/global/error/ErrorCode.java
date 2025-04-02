@@ -7,6 +7,7 @@ public enum ErrorCode {
     NOT_MATCH_PASSWORD("비밀번호가 서로 일치하지 않습니다. 다시 입력해주세요."),
     INVALID_EMAIL("유효하지 않는 이메일 형식입니다."),
     USER_REGISTRATION_FAILED("사용자 등록에 실패하였습니다. 다시 시도해주세요."),
+    TODO_LIST_REGISTRATION_FAILED("투두 리스트 등록에 실패하였습니다."),
     USER_NOT_FOUND("가입된 사용자 정보가 없습니다.")
     ;
 
