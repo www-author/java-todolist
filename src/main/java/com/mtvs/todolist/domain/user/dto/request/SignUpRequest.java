@@ -1,6 +1,6 @@
-package com.mtvs.todolist.user.dto.request;
+package com.mtvs.todolist.domain.user.dto.request;
 
-import com.mtvs.todolist.user.model.User;
+import com.mtvs.todolist.domain.user.model.User;
 
 public class SignUpRequest {
     private final String name;

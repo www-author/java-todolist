@@ -1,4 +1,4 @@
-package com.mtvs.todolist.user.model;
+package com.mtvs.todolist.domain.user.model;
 
 import com.mtvs.todolist.global.exception.BusinessException;
 import com.mtvs.todolist.global.model.BaseEntity;
