@@ -1,4 +1,4 @@
-package com.mtvs.todolist.user.dto.request;
+package com.mtvs.todolist.domain.user.dto.request;
 
 public record LoginRequest(
         String email,
