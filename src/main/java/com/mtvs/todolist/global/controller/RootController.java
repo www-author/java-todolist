@@ -18,19 +18,19 @@ public class RootController {
 
     public void execute() {
         try {
-            RootView.getInstance().showMenu();
-            while (true) {
-                Menu menu = findByMenu(Console.open().nextInt(), MenuType.ROOT);
-                switch (menu) {
-                    case SIGN_UP -> UserController.getInstance().signUp();
-                    case LOGIN ->  UserController.getInstance().login();
-                    case EXIT -> RootView.getInstance().exit();
-                    default -> System.out.println(Message.INVALID_MENU.getMessage());
-                }
+            RootView rootView = RootView.getInstance();
+            rootView.showMenu();
+            while (true) switch (rootView.findMenu()) {
+                case SIGN_UP -> UserController.getInstance().signUp();
+                case LOGIN ->  UserController.getInstance().login();
+                case EXIT -> RootView.getInstance().exit();
+                default -> rootView.retryMenuSelection();
             }
         } catch (Exception e) {
             Log.record(Level.ERROR, e.getMessage());
             e.printStackTrace();
         }
     }
+
+
 }

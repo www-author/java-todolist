@@ -25,4 +25,8 @@ public final class Console {
             LazyHolder.INSTANCE.close();
         }
     }
+
+    public static boolean isInvalidInt() {
+        return Console.open().hasNextInt();
+    }
 }
