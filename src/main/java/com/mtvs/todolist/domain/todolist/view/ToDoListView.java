@@ -8,6 +8,7 @@ import com.mtvs.todolist.global.Menu;
 import com.mtvs.todolist.global.MenuType;
 import com.mtvs.todolist.global.Message;
 import com.mtvs.todolist.global.util.Console;
+import com.mtvs.todolist.global.util.TimeManager;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -34,25 +35,41 @@ public class ToDoListView {
         printView(TodoListController.getInstance().readTodoList(request.id()));
         System.out.println(Message.TODO_LIST_MENU.getMessage());
         while (true) {
-            Menu menu = findByMenu(Console.open().nextInt(), MenuType.TODO_LIST);
-            switch (menu) {
+            switch (findMenu()) {
                 case CREATE -> createTodoList(request);
                 case TOGGLE -> updateCompletionStatus(request);
                 case DELETE -> deleteTodoList(request);
                 case LOGOUT -> UserController.getInstance().logout();
-                default -> System.out.println(Message.INVALID_MENU.getMessage());
+                default -> retryMenuSelection(request);
             }
         }
+    }
+
+    private Menu findMenu() {
+        if (Console.isInvalidInt()){
+            return findByMenu(Console.open().nextInt(), MenuType.TODO_LIST);
+        }
+        return Menu.DEFAILT;
+    }
+
+    private void retryMenuSelection(final UserResponse request) {
+        System.out.flush();
+        Console.reset();
+        System.out.println(Message.INVALID_MENU.getMessage());
+        TimeManager.delay(1L);
+        showMenu(request);
     }
 
     private void deleteTodoList(final UserResponse request) {
         System.out.flush();
         Console.reset();
         TodoListController.getInstance().deleteTodoList(
-                searchKeyword(request).stream()
+                searchKeyword(request)
+                        .stream()
                         .map(TodoListResponse::getId)
                         .toList()
         );
+        TimeManager.delay(1L);
         showMenu(request);
     }
 
