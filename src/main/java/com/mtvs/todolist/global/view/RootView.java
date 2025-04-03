@@ -1,16 +1,11 @@
-package com.mtvs.todolist.view;
+package com.mtvs.todolist.global.view;
 
 import com.mtvs.todolist.global.Message;
+import com.mtvs.todolist.global.config.JDBCConnection;
 import com.mtvs.todolist.global.util.Console;
 
-import java.util.Scanner;
-
 public class RootView {
-    private final Scanner scanner;
-
-    private RootView() {
-        this.scanner = Console.open();
-    }
+    private RootView() {}
 
     public static RootView getInstance() {
         return new RootView();
@@ -22,11 +17,8 @@ public class RootView {
 
     public void exit() {
         System.out.println(Message.END_MENU.getMessage());
+        JDBCConnection.close();
         Console.close();
         System.exit(0);
-    }
-
-    public void printErrorMessage(String message) {
-        System.out.println(message);
     }
 }
