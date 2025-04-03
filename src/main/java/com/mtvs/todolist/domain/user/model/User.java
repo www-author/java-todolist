@@ -89,7 +89,7 @@ public class User extends BaseEntity {
     }
 
     private void validateUserEmail(String email) {
-        if (StringUtils.isNotBlank(email) ||
+        if (StringUtils.isNotBlank(email) &&
                 email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
         ) {
             return;
