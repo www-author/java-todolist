@@ -12,23 +12,81 @@
 ## :memo: 요구사항 분석 및 설계  
 
 ## 시퀀스 다이어그램 
-```mermaid
 
+### 회원 가입 
+```mermaid
 sequenceDiagram
-actor users 
-participant 투두리스트
+    actor Users
+    participant View
+    participant Controller
+    participant Service
+    participant DAO
+    participant DB
+    Users ->> View: 메뉴 선택 (회원가입)
+    View ->> Users: 회원가입 정보 입력 요청
+    Users ->> View: 회원 가입 정보 입력 (Usersname, email, pw)
+    View ->> Controller: 회원가입 요청 (입력 정보 전달)
+    Controller ->> Service: 회원가입 처리 요청
+    Service ->> DAO: 가입된 회원 여부를 위한 정보 조회 (이메일 정보 전달)
+    DAO ->> Service : 회원 정보 반환
+    alt 존재하지 않는 회원일 경우
+        Service ->> DAO : 회원 정보 저장 요청
+        DAO ->> DB: 회원 데이터 저장
+        DB -->> DAO: 데이터 저장 성공 여부 반환
+        DAO -->> Service: 데이터 저장 완료 응답
+        Service -->> Controller: 회원가입 성공 응답
+        Controller ->> View: 회원가입 성공 화면 출력 요청
+        View ->> Users: 회원가입 완료 메시지 출력
+    else 이미 존재하는 회원일 경우
+        Service -->> Controller: 중복 회원 에러 메시지 전달
+        Controller ->> View: 중복 회원 에러 메시지 출력 요청
+        View ->> Users: 중복 회원 에러 메시지 출력
+    end
 ```
+
+### 로그인 
+
+```mermaid
+sequenceDiagram
+    actor Users
+    Users ->>View: 로그인 메뉴 선택
+    View ->> Users : 로그인 정보 요청 (ID,PW)
+    Users ->> View: 로그인 정보 입력
+    View ->> Controller: 로그인 요청 전달 (로그인 정보 전달)
+    Controller->>Service: 로그인 정보 전달
+    Service->>DAO: 이메일을 통한 회원 정보 조회
+    DAO ->> DB : 회원 정보 조회 요청 
+    DB ->> DAO : 회원 정보 전달   
+    DAO ->> Service: 회원 정보 반환
+    alt 회원 정보가 있는 경우 
+	  Service ->> Domain : PW 일치 여부 요청
+	  Domain ->> Service : PW 일치 여부 응답 
+		Service->> Controller: 로그인 결과 반환
+		Controller ->> View : 메인 화면 출력 요청 및 로그인 정보 전달  
+		View ->> Users : 메인 화면 출력 
+    else 회원 정보가 존재하지 않는 경우 
+    Service ->> Controller : 에러 메시지 전달 (존재하지 않는 회원)
+    Controller ->> View : 에러 메시지 출력 요청 
+    end 
+```
+### 투두 리스트 
+
+> 투두 리스트 목록 조회, 완료 여부 상태 변경, 삭제 기능  
+
+### 투두리스트 완료 여부 상태 변경 
+
+### 투두리스트 삭제
+
+
+
 회원가입 
 로그인 
 투두리스트 조회, 생성, 상태 변경, 삭제
 로그아웃
 
 
-## 클래스 다이어그램  
-
 ## ERD 
-
-## 상태 다이어그램 
+ 
 
 
 ## :computer: :art:  화면 (UI/UX) 설계   
