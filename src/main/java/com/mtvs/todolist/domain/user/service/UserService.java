@@ -4,6 +4,7 @@ import com.mtvs.todolist.domain.user.dao.UserDao;
 import com.mtvs.todolist.domain.user.dto.request.LoginRequest;
 import com.mtvs.todolist.domain.user.dto.request.SignUpRequest;
 import com.mtvs.todolist.domain.user.dto.response.UserResponse;
+import com.mtvs.todolist.domain.user.exception.DuplicateUserException;
 import com.mtvs.todolist.domain.user.exception.UserNotFoundException;
 import com.mtvs.todolist.domain.user.model.User;
 
@@ -22,7 +23,7 @@ public class UserService {
         User user = request.toEntity();
         boolean isUser = this.userDao.existByEmail(request.getEmail());
         if (isUser) {
-            throw new UserNotFoundException();
+            throw new DuplicateUserException();
         };
         return this.userDao.save(user);
     }
