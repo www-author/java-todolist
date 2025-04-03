@@ -1,6 +1,21 @@
 <configuration>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file> <!-- logs 폴더 내부에 app.log 파일 생성 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger{36}] - %msg%n</pattern> <!-- 로그 패턴 정의 -->
+        </encoder>
+        <!-- 롤링 정책 설정: 크기 기반 롤링 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 최대 로그 파일 크기 (예: 10MB) -->
+            <FileNamePattern>logs/app-%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <maxFileSize>10MB</maxFileSize> <!-- 파일 크기가 10MB를 넘으면 롤링 -->
+            <maxHistory>30</maxHistory> <!-- 최대 30일간의 로그를 보관 -->
+            <totalSizeCap>30MB</totalSizeCap> <!-- 전체 로그 파일 크기 최대 5GB -->
+        </rollingPolicy>
+    </appender>
     <logger name="com.zaxxer.hikari" level="ERROR"/>
     <root level="INFO">
+        <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
