@@ -32,7 +32,7 @@ public class RootView {
         if (Console.isInvalidInt()){
             return findByMenu(Console.open().nextInt(), MenuType.ROOT);
         }
-        return Menu.DEFAILT;
+        return Menu.DEFAULT;
     }
 
     public void retryMenuSelection() {

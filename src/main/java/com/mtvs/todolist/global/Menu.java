@@ -11,9 +11,7 @@ public enum Menu {
     TOGGLE(MenuType.TODO_LIST, 2),
     DELETE(MenuType.TODO_LIST, 3),
     LOGOUT(MenuType.TODO_LIST, 4),
-    BACK_TO_MENU(MenuType.TODO_LIST, 4),
-    //RANKING(MenuType.TODO_LIST, 3),
-    DEFAILT(MenuType.NONE, 99999)
+    DEFAULT(MenuType.NONE, 99999)
     ;
 
     private final MenuType menuType;
@@ -43,6 +41,6 @@ public enum Menu {
         return Arrays.stream(Menu.values())
                 .filter(condition)
                 .findFirst()
-                .orElseGet(() -> Menu.DEFAILT);
+                .orElseGet(() -> Menu.DEFAULT);
     }
 }

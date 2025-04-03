@@ -49,7 +49,7 @@ public class ToDoListView {
         if (Console.isInvalidInt()){
             return findByMenu(Console.open().nextInt(), MenuType.TODO_LIST);
         }
-        return Menu.DEFAILT;
+        return Menu.DEFAULT;
     }
 
     private void retryMenuSelection(final UserResponse request) {
