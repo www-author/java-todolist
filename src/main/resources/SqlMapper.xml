@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <queries>
-    <query id="getAllUsers">
-        SELECT
-        *
-        FROM users
+    <query id="findAllTodoListByUserId">
+        SELECT * FROM todo_list
+        WHERE user_id = ?
+        AND is_deleted != 1
+        ORDER BY todo_list_id
+    </query>
+
+    <query id="findAllByUserIdAndKeyword">
+        SELECT * FROM todo_list
+        WHERE 1=1
+        AND user_id = ?
+        AND is_deleted != 1
+        AND MATCH(content) AGAINST(? IN BOOLEAN MODE)
     </query>
 
     <query id="findUserByEmail">
-        SELECT * FROM users WHERE email = ?
+        SELECT * FROM user WHERE email = ?
     </query>
 
     <query id="existsByEmail">
-        SELECT 1 FROM users WHERE email = ?
+        SELECT 1 FROM user WHERE email = ?
     </query>
 
     <query id="addUser">
@@ -19,11 +28,20 @@
         VALUES (?, ?, ?, ?, ?, ?)
     </query>
 
-    <query id="updateUser">
-        UPDATE users SET username = ?, email = ?, password_hash = ?, role_id = ? WHERE user_id = ?
+    <query id="addTodoList">
+        INSERT INTO todo_list (content, user_id)
+        VALUES (?, ?)
     </query>
 
-    <query id="deleteUser">
-        DELETE FROM users WHERE user_id = ?
+    <query id="updateCompletionStatus">
+        UPDATE todo_list
+        SET is_completed = ?
+        WHERE todo_list_id = ?
+    </query>
+
+    <query id="deleteTodoList">
+        UPDATE todo_list
+        SET is_deleted = 1
+        WHERE todo_list_id IN (
     </query>
 </queries>
