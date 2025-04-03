@@ -1,6 +1,6 @@
 package com.mtvs.todolist;
 
-import com.mtvs.todolist.controller.RootController;
+import com.mtvs.todolist.global.controller.RootController;
 
 
 public class Application {
