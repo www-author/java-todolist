@@ -8,8 +8,9 @@ public enum ErrorCode {
     INVALID_EMAIL("유효하지 않는 이메일 형식입니다."),
     USER_REGISTRATION_FAILED("사용자 등록에 실패하였습니다. 다시 시도해주세요."),
     TODO_LIST_REGISTRATION_FAILED("투두 리스트 등록에 실패하였습니다."),
-    USER_NOT_FOUND("가입된 사용자 정보가 없습니다.")
-    ;
+    USER_NOT_FOUND("가입된 사용자 정보가 없습니다."),
+    TODO_LIST_UPDATE_COMPLETION_STATUS_FAILED("투두 리스트 완료 여부 변경에 실하였습니다."),
+    TODO_LIST_DELETE_FAILED("투두 리스트 삭제에 실패하였습니다.");
 
     private final String message;
 
