@@ -1,15 +1,13 @@
-package com.mtvs.todolist.view;
+package com.mtvs.todolist.domain.user.view;
 
-import com.mtvs.todolist.user.dto.request.LoginRequest;
-import com.mtvs.todolist.user.dto.request.SignUpRequest;
+import com.mtvs.todolist.domain.user.dto.request.LoginRequest;
+import com.mtvs.todolist.domain.user.dto.request.SignUpRequest;
 import com.mtvs.todolist.global.Message;
 import com.mtvs.todolist.global.error.ErrorCode;
 import com.mtvs.todolist.global.util.Console;
-import com.mtvs.todolist.user.dto.response.UserResponse;
 
 public class UserView {
-    private UserView() {
-    }
+    private UserView() {}
 
     public static UserView getInstance() {
         return new UserView();
@@ -21,10 +19,6 @@ public class UserView {
 
     public void printSignUp(boolean isSignUp) {
         System.out.println(isSignUp ? Message.COMPLETE_SIGN_UP.getMessage() : ErrorCode.USER_REGISTRATION_FAILED.getMessage());
-    }
-
-    public void printLogin(final UserResponse response) {
-        System.out.println(Message.SUCCESS_LOGIN.getMessage() + response.getName() + "님");
     }
 
     public SignUpRequest signUp() {
@@ -56,10 +50,10 @@ public class UserView {
         Console.reset();
 
         System.out.println(Message.ENTER_YOUR_EMAIL.getMessage());
-        String email = Console.open().nextLine();
+        String email = Console.open().nextLine().strip();
 
         System.out.println(Message.ENTER_YOUR_LOGIN_PASSWORD.getMessage());
-        String password = Console.open().nextLine();
+        String password = Console.open().nextLine().strip();
 
         return LoginRequest.of(email, password);
     }
