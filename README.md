@@ -162,6 +162,7 @@ sequenceDiagram
     View ->> users: 투두 리스트 화면 출력
 ```
 투두리스트 삭제의 경우 soft delete로 실제 삭제가 이뤄지지는 않는다. (업데이트)  
+-> 해당 서비스에서는 hard delete가 적합하다고 생각하지만, soft delete로 구현해보았습니다. 
 
 ## ERD
 
