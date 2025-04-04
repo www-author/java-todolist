@@ -9,11 +9,11 @@
 :heavy_check_mark: SQL 종속적인 데이터 접근 기술의 한계에 대하여 알아보고자 한다. <br>
 :heavy_check_mark: 또한, Spring 프레임워크 없이 순수 자바 콘솔로 mvc 패턴을 구현하는 과정을 체험한다.
 ---
-## :memo: 요구사항 분석 및 설계  
+## :memo: 요구사항 분석 및 설계
 
-## 시퀀스 다이어그램 
+## 시퀀스 다이어그램
 
-### 회원 가입 
+### 회원 가입
 ```mermaid
 sequenceDiagram
     actor Users
@@ -44,7 +44,7 @@ sequenceDiagram
     end
 ```
 
-### 로그인 
+### 로그인
 
 ```mermaid
 sequenceDiagram
@@ -69,26 +69,75 @@ sequenceDiagram
     Controller ->> View : 에러 메시지 출력 요청 
     end 
 ```
-### 투두 리스트 
+### 투두 리스트
 
-> 투두 리스트 목록 조회, 완료 여부 상태 변경, 삭제 기능  
+> 투두 리스트 목록 조회, 완료 여부 상태 변경, 삭제 기능
 
-### 투두리스트 완료 여부 상태 변경 
+### 투두리스트 완료 여부 상태 변경
 
 ### 투두리스트 삭제
 
 
 
-회원가입 
-로그인 
-투두리스트 조회, 생성, 상태 변경, 삭제
-로그아웃
+
+## ERD
 
 
-## ERD 
+## ERD
+
+```mermaid
+erDiagram
+user ||--o{ todo_list : has
+
+user {
+    int user_id PK
+    varchar(100) name
+    varchar(255) password
+    varchar(255) email
+    timestamp created_at
+    timestamp updated_at
+    tinyint is_deleted
+}
+
+todo_list {
+    int todo_list_id PK
+    text content
+    tinyint is_completed
+    int user_id FK
+    timestamp created_at
+    timestamp updated
+}
+```
+
+
+## :computer: :art:  화면 (UI/UX) 설계
+
+|                           최초 화면                           |                              
+|:---------------------------------------------------------:|
+| <img src="./src/main/resources/img/root.png" width="300"> |
+| <img src="./src/main/resources/img/exit.png" width="300"> |
+
+<br>
+
+|회원 가입|
+|:----------:|
+| <img src="./src/main/resources/img/signup.png" width="300"> | 
+
+<br>
+
+|                            로그인                             |
+|:----------------------------------------------------------:|
+| <img src="./src/main/resources/img/login.png" width="300"> |
+
+<br>
+
+|                      투두 리스트 화면 (메인 화면)                       |
+|:------------------------------------------------------------:|
+| <img src="./src/main/resources/img/main.png" width="300">  |
+| <img src="./src/main/resources/img/mark.png" width="300">  |
+| <img src="./src/main/resources/img/delete.png" width="300">  |
+| <img src="./src/main/resources/img/logout.png" width="300">  |
+
+
+
  
-
-
-## :computer: :art:  화면 (UI/UX) 설계   
- 
-
