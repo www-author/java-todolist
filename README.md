@@ -195,29 +195,29 @@ todo_list {
 
 |                           최초 화면                           |                              
 |:---------------------------------------------------------:|
-| <img src="./src/main/resources/img/root.png" width="300"> |
-| <img src="./src/main/resources/img/exit.png" width="300"> |
+| <img src="./src/main/resources/img/root.png" width="500"> |
+| <img src="./src/main/resources/img/exit.png" width="500"> |
 
 <br>
 
-|회원 가입|
-|:----------:|
-| <img src="./src/main/resources/img/signup.png" width="300"> | 
+|                            회원 가입                            |
+|:-----------------------------------------------------------:|
+| <img src="./src/main/resources/img/signup.png" width="500"> | 
 
 <br>
 
 |                            로그인                             |
 |:----------------------------------------------------------:|
-| <img src="./src/main/resources/img/login.png" width="300"> |
+| <img src="./src/main/resources/img/login.png" width="500"> |
 
 <br>
 
-|                      투두 리스트 화면 (메인 화면)                       |
-|:------------------------------------------------------------:|
-| <img src="./src/main/resources/img/main.png" width="300">  |
-| <img src="./src/main/resources/img/mark.png" width="300">  |
-| <img src="./src/main/resources/img/delete.png" width="300">  |
-| <img src="./src/main/resources/img/logout.png" width="300">  |
+|                      투두 리스트 화면 (메인 화면)                      |
+|:-----------------------------------------------------------:|
+|  <img src="./src/main/resources/img/main.png" width="500">  |
+|  <img src="./src/main/resources/img/mark.png" width="500">  |
+| <img src="./src/main/resources/img/delete.png" width="500"> |
+| <img src="./src/main/resources/img/logout.png" width="500"> |
 
 
 
