@@ -25,7 +25,7 @@ sequenceDiagram
     participant DB
     Users ->> View: 메뉴 선택 (회원가입)
     View ->> Users: 회원가입 정보 입력 요청
-    Users ->> View: 회원 가입 정보 입력 (Usersname, email, pw)
+    Users ->> View: 회원 가입 정보 입력 (username, email, pw)
     View ->> Controller: 회원가입 요청 (입력 정보 전달)
     Controller ->> Service: 회원가입 처리 요청
     Service ->> DAO: 가입된 회원 여부를 위한 정보 조회 (이메일 정보 전달)
@@ -96,7 +96,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    actor users
+    actor Users
     participant View
     participant Controller
     participant Service
@@ -107,13 +107,13 @@ sequenceDiagram
     View ->> Users: 작성할 투두리스트 내용 요청 
     Users ->> View : 작성할 투두리스트 입력 
     View ->> Controller : 투두리스트 작성 요청 (userId, content 전달) 
-    Controller ->> Service: 투두리스트 데이터 전달 (userId, content)
-    Service ->> DAO: 데이터 기반의 투두리스트 작성 요청 
-    DAO ->> DB: 투두 리스트 데이터 생성 요청 
-    DB ->> DAO: 투두리스트 생성 여부 반환 
+    Controller ->> Service : 투두리스트 데이터 전달 (userId, content)
+    Service ->> DAO : 데이터 기반의 투두리스트 작성 요청 
+    DAO ->> DB : 투두 리스트 데이터 생성 요청 
+    DB ->> DAO : 투두리스트 생성 여부 반환 
     DAO ->> Service: 투두 리스트 생성 응답 
-    Service ->> Controller  
-    Controller ->> View: 투두 리스트 메뉴 화면 출력 요청 
+    Service ->> Controller : 
+    Controller ->> View : 투두 리스트 메뉴 화면 출력 요청 
     View ->> users: 투두 리스트 화면 출력 
 ```
 
@@ -134,8 +134,8 @@ sequenceDiagram
     Service ->> DAO: 투두 리스트 상태 변경 요청  
     DAO ->> DB: 투두 리스트 완료 상태 여부 업데이트 요청 
     DB ->> DAO: 완료 상태 여부 업데이트 결과 반환
-    DAO ->> Service
-    Service ->> Controller 
+    DAO ->> Service : 
+    Service ->> Controller :  
     Controller ->> View: 투두 리스트 메뉴 화면 출력 요청 
     View -->> users: 투두 리스트 화면 출력
 ```
@@ -157,12 +157,14 @@ sequenceDiagram
     Controller ->> Service: 삭제할 투두리스트 id 목록 전달  
     Service ->> DAO: 투두리스트 id 목록을 토대로 삭제(soft delete) 요청   
     DAO ->> DB: 투두 리스트 id목록들의 업데이트 요청 (is_deleted 상태 업데이트) 
-    DB ->> DAO
-    DAO ->> Service
-    Service ->> Controller 
+    DB ->> DAO : 
+    DAO ->> Service :  
+    Service ->> Controller :   
     Controller ->> View: 투두 리스트 메뉴 화면 출력 요청 
-    View -->> users: 투두 리스트 화면 출력
+    View ->> users: 투두 리스트 화면 출력
 ```
+투두리스트 삭제의 경우 soft delete로 실제 삭제가 이뤄지지는 않는다. (업데이트)  
+
 ## ERD
 
 ```mermaid
